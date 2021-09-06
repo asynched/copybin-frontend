@@ -11,7 +11,7 @@ import { useHistory } from 'react-router'
 export default function NewFile() {
   const history = useHistory()
   const [code, setCode] = useState(
-    "# Hello, world!\n\nThis is our app. xD\n\nHere you can save your files and stuff.\n\nCool, isn't it? 🆒\n"
+    "# Hello, world!\n\nThis is our app. xD\n\nHere you can save your files and stuff.\n\nCool, isn't it? 🆒\n",
   )
 
   const handleSave = async () => {
@@ -32,6 +32,7 @@ export default function NewFile() {
           theme: 'ayu-mirage',
           keyMap: 'sublime',
           mode: 'markdown',
+          lineWrapping: true,
           smartIndent: true,
         }}
         height={'100vh'}

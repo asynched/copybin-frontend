@@ -44,6 +44,7 @@ export default function File() {
           theme: 'ayu-mirage',
           keyMap: 'sublime',
           mode: 'markdown',
+          lineWrapping: true,
           smartIndent: true,
         }}
         height={'100vh'}

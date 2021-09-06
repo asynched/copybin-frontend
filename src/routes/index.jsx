@@ -13,6 +13,7 @@ export default function Routes() {
         <Switch>
           <Route exact path="/" component={IndexPage} />
           <Route path="/new/file" component={NewFilePage} />
+          <Route exact path="/f/:fileID" component={FilePage} />
           <Route path="/file/:fileID" component={FilePage} />
         </Switch>
       </BrowserRouter>
