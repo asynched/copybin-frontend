@@ -1,0 +1,20 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'JetBrains Mono', mono;
+  font-size: 16px;
+}
+
+:root {
+  --background: #1f2430;
+  --text: #cbccc6;
+  --primary: #bae664;
+}
+
+body {
+  background: var(--background);
+}
+
+button {
+  cursor: pointer;
+}
