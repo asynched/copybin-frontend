@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { useHistory, useParams } from 'react-router'
+import { toast } from 'react-toastify'
+import styled from 'styled-components'
 
 import CodeMirror from '@uiw/react-codemirror'
 import 'codemirror/keymap/sublime'
@@ -14,8 +15,17 @@ export default function File() {
   const history = useHistory()
   const [code, setCode] = useState('Loading... 👾')
 
-  const handleSave = async () => {
-    await updateFile(fileID, code)
+  const handleSave = () => {
+    toast.promise(
+      async () => {
+        await updateFile(fileID, code)
+      },
+      {
+        pending: 'Saving...',
+        success: 'File saved.',
+        error: 'Error whilst trying to save the file, try again.',
+      },
+    )
   }
 
   useEffect(() => {

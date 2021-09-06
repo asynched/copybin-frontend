@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router'
+import { toast } from 'react-toastify'
 
 import CodeMirror from '@uiw/react-codemirror'
 import 'codemirror/keymap/sublime'
 import 'codemirror/mode/markdown/markdown'
 import 'codemirror/theme/ayu-mirage.css'
 import styled from 'styled-components'
+
 import { saveFile } from '../lib/requests'
-import { useHistory } from 'react-router'
 
 export default function NewFile() {
   const history = useHistory()
@@ -14,10 +16,18 @@ export default function NewFile() {
     "# Hello, world!\n\nThis is our app. xD\n\nHere you can save your files and stuff.\n\nCool, isn't it? 🆒\n",
   )
 
-  const handleSave = async () => {
-    const { id: fileID } = await saveFile(code)
-
-    history.push(`/file/${fileID}`)
+  const handleSave = () => {
+    toast.promise(
+      async () => {
+        const { id: fileID } = await saveFile(code)
+        history.push(`/file/${fileID}`)
+      },
+      {
+        pending: 'Saving...',
+        success: 'File saved.',
+        error: 'Error whilst trying to save the file, try again.',
+      },
+    )
   }
 
   return (
